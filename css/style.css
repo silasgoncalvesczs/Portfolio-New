@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.h1Titulo {
+    margin-top: 150px;
+}
+
+.fonte01 {
+    font-family: 'Press Start 2P', cursive;
+}
+
+.fonte02 {
+    font-family: 'Gruppo', cursive;
+}
+
+.fonte03 {
+    font-family: 'Poiret One', cursive;
+}
+
+.fonte04 {
+    font-family: 'Monoton', cursive;
+}
+
+#backFundo {
+    height: 600px;
+    width: 100%;
+    background-image: url('../assets/background05.jpg');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: cover;
+}
+
+#pelicula {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 600px;
+}
+
+.MeuPortofolio {
+    margin-top: 90px;
+}
+
+.TextCorLaran {
+    color: #f2935c;
+}
