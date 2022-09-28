@@ -24,7 +24,7 @@ body {
 }
 
 #backFundo {
-    height: 600px;
+    height: 580px;
     width: 100%;
     background-image: url('../assets/background05.jpg');
     background-repeat: no-repeat;
@@ -34,11 +34,11 @@ body {
 
 #pelicula {
     background-color: rgba(0, 0, 0, 0.7);
-    height: 600px;
+    height: 580px;
 }
 
 .MeuPortofolio {
-    margin-top: 90px;
+    margin-top: 120px;
 }
 
 .TextCorLaran {
