@@ -28,7 +28,7 @@ body {
     width: 100%;
     background-image: url('../assets/background05.jpg');
     background-repeat: no-repeat;
-    background-position-x: center;
+    background-position: center;
     background-size: cover;
 }
 
@@ -36,10 +36,6 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
     height: 530px;
 }
-
-/* .MeuPortofolio {
-    margin-top: 145px;
-} */
 
 .TextCorLaran {
     color: #f2935c;
