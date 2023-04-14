@@ -40,3 +40,13 @@ body {
 .TextCorLaran {
     color: #f2935c;
 }
+
+.cardsGithub{
+    width: 400px;
+}
+
+@media screen and (max-width: 767px) {
+    .cardsGithub{
+        width: 300px;
+    }
+}
