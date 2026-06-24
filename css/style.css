@@ -50,3 +50,87 @@ body {
         width: 300px;
     }
 }
+
+/* ==========================================
+   EFEITO DE SCROLL REVEAL
+   ========================================== */
+.hidden-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.show-scroll {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   MODO CLARO (LIGHT THEME)
+   ========================================== */
+body.light-theme {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+}
+
+/* Ajuste da Navbar no Modo Claro */
+body.light-theme .navbar {
+    background-color: #e9ecef !important;
+}
+
+body.light-theme .navbar-brand a {
+    color: #212529 !important;
+}
+
+/* Ajuste dos Cards no Modo Claro */
+body.light-theme .card.text-bg-primary {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+    border: 2px solid #0d6efd !important;
+}
+
+body.light-theme .text-light,
+body.light-theme .text-muted {
+    color: #212529 !important;
+}
+
+/* Ajuste do fundo principal (se necessário) */
+body.light-theme .bg-dark {
+    background-color: #f8f9fa !important;
+}
+
+/* ==========================================
+   AJUSTES EXTRAS DO MODO CLARO (LIGHT THEME)
+   ========================================== */
+
+/* 1. Arrumando a cor dos textos dos botões do menu */
+body.light-theme .navbar-nav .btn-outline-primary {
+    color: #0d6efd !important; /* Deixa o texto azul igual a borda */
+}
+
+body.light-theme .navbar-nav .btn-outline-primary:hover {
+    color: #ffffff !important; /* Fica branco quando passa o mouse */
+    background-color: #0d6efd !important;
+}
+
+/* 2. Invertendo a cor das imagens/ícones brancos das redes sociais */
+body.light-theme ul.list-unstyled img {
+    filter: invert(1) brightness(0.2); /* Transforma ícones brancos em escuros */
+}
+
+/* 3. Garante que o texto da máquina de escrever continue branco no modo claro */
+body.light-theme #pelicula p {
+    color: #f8f9fa !important;
+}
+
+/* 4. Ajuste do botão de Tema no Modo Claro */
+body.light-theme #theme-toggle {
+    color: #212529 !important;
+    border-color: #212529 !important;
+    background-color: transparent !important;
+}
+
+body.light-theme #theme-toggle:hover {
+    background-color: #212529 !important;
+    color: #ffffff !important;
+}
