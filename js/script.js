@@ -66,38 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================
-// 3. BOTÃO FLUTUANTE DO LINKEDIN
-// ==========================================
-window.addEventListener('scroll', () => {
-    let btn = document.getElementById('linkedin-float');
-
-    if (window.scrollY > 300) {
-        if (!btn) {
-            btn = document.createElement('a');
-            btn.id = 'linkedin-float';
-            btn.href = 'https://www.linkedin.com/in/silasgoncal';
-            btn.target = '_blank';
-            btn.rel = 'noopener noreferrer';
-            btn.textContent = window.I18N ? window.I18N.t('float.linkedin') : 'Conectar no LinkedIn';
-            document.body.appendChild(btn);
-        } else if (window.I18N) {
-            btn.textContent = window.I18N.t('float.linkedin');
-        }
-        btn.style.display = 'block';
-    } else if (btn) {
-        btn.style.display = 'none';
-    }
-});
-
-if (window.I18N) {
-    window.I18N.onChange(() => {
-        const btn = document.getElementById('linkedin-float');
-        if (btn) btn.textContent = window.I18N.t('float.linkedin');
-    });
-}
-
-// ==========================================
-// 4. API DO GITHUB - PROJETOS RECENTES
+// 3. API DO GITHUB - PROJETOS RECENTES
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const repoContainer = document.getElementById('meus-repos-dinamicos');
@@ -184,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================
-// 5. ANIMAÇÃO DE ROLAGEM (SCROLL REVEAL)
+// 4. ANIMAÇÃO DE ROLAGEM (SCROLL REVEAL)
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -210,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================
-// 6. MODO CLARO / ESCURO (TOGGLE DINÂMICO)
+// 5. MODO CLARO / ESCURO (TOGGLE DINÂMICO)
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const themeToggleBtn = document.getElementById('theme-toggle');
