@@ -3,6 +3,13 @@ body {
     padding: 0;
 }
 
+/* Aplica tema claro antes do JS para evitar flash */
+html.theme-pending-light body,
+body.light-theme {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+}
+
 .h1Titulo {
     margin-top: 150px;
 }
@@ -41,14 +48,106 @@ body {
     color: #f2935c;
 }
 
-.cardsGithub{
-    width: 400px;
+.navbar-nav .nav-item .nav-link.btn {
+    display: inline-block;
 }
 
-@media screen and (max-width: 767px) {
-    .cardsGithub{
-        width: 300px;
-    }
+/* Seletor de idioma PT | EN */
+.lang-switch {
+    display: inline-flex;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.lang-btn {
+    background: transparent;
+    color: #fff;
+    border: 0;
+    padding: 0.4rem 0.75rem;
+    font-family: 'Gruppo', cursive;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    line-height: 1.2;
+    min-width: 44px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.lang-btn + .lang-btn {
+    border-left: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.lang-btn:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.lang-btn.active {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+html.theme-pending-light .lang-switch,
+body.light-theme .lang-switch {
+    border-color: #212529;
+}
+
+html.theme-pending-light .lang-btn,
+body.light-theme .lang-btn {
+    color: #212529;
+}
+
+html.theme-pending-light .lang-btn + .lang-btn,
+body.light-theme .lang-btn + .lang-btn {
+    border-left-color: #212529;
+}
+
+html.theme-pending-light .lang-btn:hover,
+body.light-theme .lang-btn:hover {
+    background-color: rgba(33, 37, 41, 0.08);
+}
+
+html.theme-pending-light .lang-btn.active,
+body.light-theme .lang-btn.active {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+#meus-repos-dinamicos .card {
+    min-height: 180px;
+}
+
+/* Descrição dos cards: contraste legível no dark (Bootstrap .text-muted fica fraco) */
+#meus-repos-dinamicos .card-text {
+    color: #cfd4da !important;
+}
+
+html.theme-pending-light #meus-repos-dinamicos .card-text,
+body.light-theme #meus-repos-dinamicos .card-text {
+    color: #495057 !important;
+}
+
+#linkedin-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0e76a8;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: 'Poiret One', cursive;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s;
+}
+
+#linkedin-float:hover {
+    transform: scale(1.05);
+    color: white;
 }
 
 /* ==========================================
@@ -57,7 +156,7 @@ body {
 .hidden-scroll {
     opacity: 0;
     transform: translateY(50px);
-    transition: all 0.8s ease-out;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .show-scroll {
@@ -65,72 +164,88 @@ body {
     transform: translateY(0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .hidden-scroll {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
 /* ==========================================
    MODO CLARO (LIGHT THEME)
    ========================================== */
-body.light-theme {
-    background-color: #f8f9fa !important;
-    color: #212529 !important;
-}
-
-/* Ajuste da Navbar no Modo Claro */
+html.theme-pending-light .navbar,
 body.light-theme .navbar {
     background-color: #e9ecef !important;
 }
 
+html.theme-pending-light .navbar-brand a,
 body.light-theme .navbar-brand a {
     color: #212529 !important;
 }
 
-/* Ajuste dos Cards no Modo Claro */
+html.theme-pending-light .card.text-bg-primary,
 body.light-theme .card.text-bg-primary {
     background-color: #ffffff !important;
     color: #212529 !important;
     border: 2px solid #0d6efd !important;
 }
 
+html.theme-pending-light .text-light,
+html.theme-pending-light .text-muted,
 body.light-theme .text-light,
 body.light-theme .text-muted {
     color: #212529 !important;
 }
 
-/* Ajuste do fundo principal (se necessário) */
+html.theme-pending-light .bg-dark,
 body.light-theme .bg-dark {
     background-color: #f8f9fa !important;
 }
 
-/* ==========================================
-   AJUSTES EXTRAS DO MODO CLARO (LIGHT THEME)
-   ========================================== */
-
-/* 1. Arrumando a cor dos textos dos botões do menu */
+html.theme-pending-light .navbar-nav .btn-outline-primary,
 body.light-theme .navbar-nav .btn-outline-primary {
-    color: #0d6efd !important; /* Deixa o texto azul igual a borda */
+    color: #0d6efd !important;
 }
 
+html.theme-pending-light .navbar-nav .btn-outline-primary:hover,
 body.light-theme .navbar-nav .btn-outline-primary:hover {
-    color: #ffffff !important; /* Fica branco quando passa o mouse */
+    color: #ffffff !important;
     background-color: #0d6efd !important;
 }
 
-/* 2. Invertendo a cor das imagens/ícones brancos das redes sociais */
+html.theme-pending-light ul.list-unstyled img,
 body.light-theme ul.list-unstyled img {
-    filter: invert(1) brightness(0.2); /* Transforma ícones brancos em escuros */
+    filter: invert(1) brightness(0.2);
 }
 
-/* 3. Garante que o texto da máquina de escrever continue branco no modo claro */
+html.theme-pending-light #pelicula p,
 body.light-theme #pelicula p {
     color: #f8f9fa !important;
 }
 
-/* 4. Ajuste do botão de Tema no Modo Claro */
+html.theme-pending-light #theme-toggle,
 body.light-theme #theme-toggle {
     color: #212529 !important;
     border-color: #212529 !important;
     background-color: transparent !important;
 }
 
+html.theme-pending-light #theme-toggle:hover,
 body.light-theme #theme-toggle:hover {
     background-color: #212529 !important;
     color: #ffffff !important;
+}
+
+html.theme-pending-light .github-inline-link,
+body.light-theme .github-inline-link {
+    color: #0d6efd !important;
+}
+
+html.theme-pending-light #meus-repos-dinamicos .card,
+body.light-theme #meus-repos-dinamicos .card {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+    border-color: #0d6efd !important;
 }

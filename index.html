@@ -16,7 +16,22 @@
     <meta property="og:url" content="https://silasgoncalvesczs.github.io/">
     <meta property="og:type" content="website">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('theme-pending-light');
+                }
+                var lang = localStorage.getItem('lang');
+                if (lang === 'en') {
+                    document.documentElement.lang = 'en';
+                } else if (lang === 'pt') {
+                    document.documentElement.lang = 'pt-BR';
+                }
+            } catch (e) { /* ignore */ }
+        })();
+    </script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,51 +41,61 @@
         rel="stylesheet">
 </head>
 
-<body class="bg-dark text-light">
+<body class="bg-dark text-light" data-i18n-title="meta.title.home">
 
     <div id="backFundo">
         <div id="pelicula">
 
             <div class="container">
-                <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+                <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" data-i18n-aria="nav.aria">
                     <div class="navbar-brand ms-5">
                         <a href="index.html" class="text-light text-decoration-none fs-3 fonte01">
                             SILAS
                         </a>
                     </div>
-                    <button class="navbar-toggler me-5" type="button" data-bs-toggle="collapse" data-bs-target="#myNav">
+                    <button class="navbar-toggler me-5" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#myNav" aria-controls="myNav" aria-expanded="false"
+                        data-i18n-aria="nav.menu">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div id="myNav" class="collapse navbar-collapse justify-content-end">
                         <ul class="navbar-nav align-items-center fs-6 fw-bold fonte02">
-                            <a href="index.html" class="nav-item text-decoration-none">
-                                <li class="nav-link btn btn-outline-primary mx-md-2 my-1 px-4 py-2"
-                                    data-bs-toggle="tab">
-                                    Home
-                                </li>
-                            </a>
-                            <a href="https://github.com/silasgoncalvesczs" class="nav-item text-decoration-none"
-                                target="_blank">
-                                <li class="nav-link btn btn-outline-primary mx-md-2 my-1 px-4 py-2"
-                                    data-bs-toggle="tab">
-                                    Github</li>
-                            </a>
-                            <a href="https://silasgoncalvesczs.github.io/linktree/"
-                                class="nav-item text-decoration-none" target="_blank">
-                                <li class="nav-link btn btn-outline-primary mx-md-2 my-1 px-4 py-2"
-                                    data-bs-toggle="tab">
-                                    Linktree</li>
-                            </a>
-                            <a href="contato.html" class="nav-item text-decoration-none">
-                                <li class="nav-link btn btn-outline-primary ms-md-2 my-1 px-4 py-2 me-md-5"
-                                    data-bs-toggle="tab">
-                                    Contatos</li>
-                            </a>
-                            <li class="nav-item ms-md-3 me-3 me-md-4 my-1">
-                                <button id="theme-toggle"
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link btn btn-outline-primary mx-md-2 my-1 px-4 py-2"
+                                    data-i18n="nav.home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/silasgoncalvesczs" target="_blank" rel="noopener noreferrer"
+                                    class="nav-link btn btn-outline-primary mx-md-2 my-1 px-4 py-2">Github</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://silasgoncalvesczs.github.io/linktree/" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="nav-link btn btn-outline-primary mx-md-2 my-1 px-4 py-2">Linktree</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://silasgoncalvesczs.github.io/QRGera/" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="nav-link btn btn-outline-primary mx-md-2 my-1 px-4 py-2">QRGera</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="contato.html"
+                                    class="nav-link btn btn-outline-primary ms-md-2 my-1 px-4 py-2"
+                                    data-i18n="nav.contacts">Contatos</a>
+                            </li>
+                            <li class="nav-item ms-md-3 my-1">
+                                <div class="lang-switch" role="group" data-i18n-aria="nav.lang">
+                                    <button type="button" class="lang-btn" data-set-lang="pt"
+                                        aria-pressed="true">PT</button>
+                                    <button type="button" class="lang-btn" data-set-lang="en"
+                                        aria-pressed="false">EN</button>
+                                </div>
+                            </li>
+                            <li class="nav-item ms-md-2 me-3 me-md-4 my-1">
+                                <button id="theme-toggle" type="button"
                                     class="btn btn-outline-light px-3 py-2 fw-bold d-flex align-items-center justify-content-center"
-                                    title="Alternar Tema" style="min-width: 120px;">
-                                    <span id="theme-icon">☀️</span>
+                                    data-i18n-aria="nav.theme" style="min-width: 120px;">
+                                    <span id="theme-icon" aria-hidden="true">☀️</span>
                                     <span id="theme-text" class="ms-2">Claro</span>
                                 </button>
                             </li>
@@ -83,9 +108,9 @@
                 <section class="d-flex mx-1">
                     <div class="col-md-5"></div>
                     <div class="col-md-7 text-center">
-                        <h1 class="fonte01 h1Titulo TextCorLaran fs-2">🔷 Silas Gonçalves!</h1>
-                        <p class="pt-md-2 mt-md-5 fonte03 fs-4 fonte03">
-                            Formado em Analise e Desenvolvimento de Sistemas, Especializado em Engenharia e
+                        <h1 class="fonte01 h1Titulo TextCorLaran fs-2">Silas Gonçalves</h1>
+                        <p class="pt-md-2 mt-md-5 fonte03 fs-4" id="hero-bio">
+                            Formado em Análise e Desenvolvimento de Sistemas, Especializado em Engenharia e
                             Arquitetura de Software,
                             Certificado pela Microsoft, Especialista em Redes e Firewall Mikrotik, e
                             Desenvolvedor Full Stack.
@@ -93,12 +118,13 @@
 
                         <div class="mt-4 pt-3">
                             <a href="./assets/SILAS GONÇALVES - Ingles v6.pdf" download="Silas_Goncalves_CV.pdf"
-                                class="btn btn-primary px-4 py-2 fw-bold fonte02 mx-2 mb-2">
-                                📄 Baixar Currículo
+                                class="btn btn-primary px-4 py-2 fw-bold fonte02 mx-2 mb-2" data-i18n="hero.cv">
+                                Baixar Currículo
                             </a>
-                            <a href="https://www.linkedin.com/in/silasgoncal/" target="_blank"
-                                class="btn btn-outline-primary px-4 py-2 fw-bold fonte02 mx-2 mb-2">
-                                🔶 Ver LinkedIn
+                            <a href="https://www.linkedin.com/in/silasgoncal/" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-outline-primary px-4 py-2 fw-bold fonte02 mx-2 mb-2"
+                                data-i18n="hero.linkedin">
+                                Ver LinkedIn
                             </a>
                         </div>
                     </div>
@@ -113,9 +139,9 @@
         <main>
             <article>
                 <div class="text-center p-3 mt-2">
-                    <h3 class="fonte02 fw-bold">Meus Portfólio</h3>
-                    <p class="fonte03 fs-4">
-                        Algumas das habilidades como Desenvolvedor, e conhecimentos em Desenvolvimento.
+                    <h3 class="fonte02 fw-bold" data-i18n="skills.title">Habilidades</h3>
+                    <p class="fonte03 fs-4" data-i18n="skills.subtitle">
+                        Tecnologias e áreas em que atuo no dia a dia.
                     </p>
                 </div>
 
@@ -123,30 +149,25 @@
                     <div class="card text-bg-primary col-md m-1 hidden-scroll">
                         <div class="card-body">
                             <h6 class="card-title fonte01 TextCorLaran">React</h6>
-                            <p class="card-text fonte03">
-                                React faz com que a criação de UIs interativas seja uma tarefa fácil. Views simples para
-                                cada estado na sua aplicação, e o React atualiza e renderiza de forma eficiente apenas
-                                os componentes necessários enquanto os dados mudam.
+                            <p class="card-text fonte03" data-i18n="skill.react">
+                                Interfaces interativas com componentes reutilizáveis, estado e renderização eficiente
+                                conforme os dados mudam.
                             </p>
                         </div>
                     </div>
                     <div class="card text-bg-primary col-md m-1 hidden-scroll">
                         <div class="card-body">
-                            <h6 class="card-title fonte01 TextCorLaran">NodeJs</h6>
-                            <p class="card-text fonte03">
-                                Uma ferramenta amplamente utilizada no universo de desenvolvimento. Node.JS é um
-                                ambiente de execução assíncrono, isto
-                                é, ele trabalha de modo a não bloquear no momento da execução da aplicação.
+                            <h6 class="card-title fonte01 TextCorLaran">Node.js</h6>
+                            <p class="card-text fonte03" data-i18n="skill.node">
+                                APIs e serviços assíncronos no backend, integração com bancos de dados e automações.
                             </p>
                         </div>
                     </div>
                     <div class="card text-bg-primary col-md m-1 hidden-scroll">
                         <div class="card-body">
-                            <h6 class="card-title fonte01 TextCorLaran">JQuery</h6>
-                            <p class="card-text fonte03">
-                                Biblioteca JavaScript rápida, pequena e rica em recursos. Ele torna coisas como
-                                travessia e manipulação de documentos HTML, manipulação de eventos, animação e Ajax
-                                muito mais simples com uma API.
+                            <h6 class="card-title fonte01 TextCorLaran">JavaScript</h6>
+                            <p class="card-text fonte03" data-i18n="skill.js">
+                                Linguagem base do front e do back: DOM, eventos, fetch, lógica de aplicação e tooling.
                             </p>
                         </div>
                     </div>
@@ -155,31 +176,25 @@
                 <div class="row fs-6 fw-bold mx-1">
                     <div class="card text-bg-primary col-md m-1 hidden-scroll">
                         <div class="card-body">
-                            <h6 class="card-title fonte01 TextCorLaran">JAVASCRIPT</h6>
-                            <p class="card-text fonte03">
-                                Uma linguagem leve, interpretada e baseada em objetos com funções de primeira classe,
-                                conhecida como a linguagem de script para páginas Web, e usada também em vários
-                                outros ambientes sem browser.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card text-bg-primary col-md m-1 hidden-scroll">
-                        <div class="card-body">
-                            <h6 class="card-title fonte01 TextCorLaran">Banco de Dados</h6>
-                            <p class="card-text fonte03">
-                                Soluções de banco de dados e linguagem SQL, MySql, MongoDB, Firebase, NPM Prisma.
-                                Domínio
-                                de ferramentas Backups, Scripts, Gerenciamento e controle de usuários.
+                            <h6 class="card-title fonte01 TextCorLaran" data-i18n="skill.db.title">Banco de Dados</h6>
+                            <p class="card-text fonte03" data-i18n="skill.db">
+                                SQL, MySQL, MongoDB, Firebase e Prisma. Backups, scripts e controle de acesso.
                             </p>
                         </div>
                     </div>
                     <div class="card text-bg-primary col-md m-1 hidden-scroll">
                         <div class="card-body">
                             <h6 class="card-title fonte01 TextCorLaran">Front End</h6>
-                            <p class="card-text fonte03">
-                                Aplicação de Soluções completas com Sections, Formulários, tocar Vídeos e mais.
-                                Utilização estilosa com o Bootstrap. Style CSS personalizado com Flexbox, Grid,
-                                animações.
+                            <p class="card-text fonte03" data-i18n="skill.front">
+                                Layouts responsivos com Bootstrap, CSS (Flexbox/Grid), formulários e animações.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card text-bg-primary col-md m-1 hidden-scroll">
+                        <div class="card-body">
+                            <h6 class="card-title fonte01 TextCorLaran" data-i18n="skill.network.title">Redes &amp; Firewall</h6>
+                            <p class="card-text fonte03" data-i18n="skill.network">
+                                MikroTik RouterOS: NAT, FailOver, LoadBalance, VPNs, Hotspots, QoS e controle de banda.
                             </p>
                         </div>
                     </div>
@@ -188,36 +203,41 @@
                 <div class="row fs-6 fw-bold mx-1">
                     <div class="card text-bg-primary col-md m-1 hidden-scroll">
                         <div class="card-body">
-                            <h6 class="card-title fonte01 TextCorLaran">REDES 🔶 FIREWALL</h6>
-                            <p class="card-text fonte03">
-                                Baseado em Linux MikroTik RouterOS. Permite o gerenciar de Redes e IPs, NAT,
-                                FailOver, Mangle,
-                                LoadBalance, VPNs, Proxy, Hotspots, Controle de Banda, QoS. Entre outras aplicações.
+                            <h6 class="card-title fonte01 TextCorLaran">Windows &amp; Linux</h6>
+                            <p class="card-text fonte03" data-i18n="skill.os">
+                                Windows Server, Azure e Power BI. Debian/Ubuntu Server e virtualização.
                             </p>
                         </div>
                     </div>
                     <div class="card text-bg-primary col-md m-1 hidden-scroll">
                         <div class="card-body">
-                            <h6 class="card-title fonte01 TextCorLaran">Windows 🔶 Linux</h6>
-                            <p class="card-text fonte03">
-                                Windows Server e serviços Azure, com Certificação, e Power B.I. Servidores
-                                Linux
-                                com Debian
-                                e Ubuntu Server, além de virtualização de Sistemas.
+                            <h6 class="card-title fonte01 TextCorLaran">Full Stack</h6>
+                            <p class="card-text fonte03" data-i18n="skill.fullstack">
+                                Do frontend ao deploy: integração de APIs, autenticação e entrega de features ponta a ponta.
                             </p>
                         </div>
                     </div>
                     <div class="card text-bg-primary col-md m-1 hidden-scroll">
                         <div class="card-body">
-                            <h6 class="card-title fonte01 TextCorLaran">Projetos</h6>
-                            <p class="card-text fonte03">
-                                Em meu <a class="text-dark" href="https://github.com/silasgoncalvesczs"
-                                    target="_blank">Github</a> estão algumas das tecnologias e alguns dos principais
-                                projetos em Desenvolvimento, e
-                                materiais de estudo, que tenho trabalhado recentemente.
+                            <h6 class="card-title fonte01 TextCorLaran" data-i18n="skill.github.title">Mais no Github</h6>
+                            <p class="card-text fonte03" data-i18n-html="skill.github.html">
+                                Em meu <a class="text-dark github-inline-link" href="https://github.com/silasgoncalvesczs"
+                                    target="_blank" rel="noopener noreferrer">Github</a> estão projetos e materiais de
+                                estudo recentes.
                             </p>
                         </div>
                     </div>
+                </div>
+
+                <div class="text-center p-3 mt-5">
+                    <h3 class="fonte02 fw-bold" data-i18n="projects.title">Projetos recentes</h3>
+                    <p class="fonte03 fs-4" data-i18n="projects.subtitle">
+                        Repositórios atualizados no Github.
+                    </p>
+                </div>
+                <div id="meus-repos-dinamicos" class="row justify-content-center mx-1 mb-4" aria-live="polite">
+                    <p class="text-center fonte03 fs-5 text-muted" id="repos-loading" data-i18n="projects.loading">
+                        Carregando projetos...</p>
                 </div>
             </article>
         </main>
@@ -225,8 +245,8 @@
 
     <div class="footer">
         <div class="container">
-            <p class="text-center fonte04 fs-5 my-3">
-                🔶 Enquanto os normais dormem, os loucos programam o futuro! 🔶
+            <p class="text-center fonte04 fs-5 my-3" data-i18n="footer.quote">
+                Enquanto os normais dormem, os loucos programam o futuro!
             </p>
         </div>
     </div>
@@ -237,6 +257,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
         integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
         crossorigin="anonymous"></script>
+    <script src="./js/i18n.js"></script>
     <script src="./js/script.js"></script>
 </body>
 
